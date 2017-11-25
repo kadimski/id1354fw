@@ -1,0 +1,201 @@
+body {
+    display: block;
+    margin: 5%;
+    text-align: center;
+    font-family: Alef;
+    font-size: 120%;
+    background: url(../pictures/background_image.jpg);
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+    /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
+}
+
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h3 { 
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+div {
+    display: block;
+}
+
+p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+img {
+    display: inline-block;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+li {
+    display: list-item;
+}
+
+nav {
+    display: block;	
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+input[type=submit] {
+    padding: 3px; 
+    background: whitesmoke; 
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: Alef;
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+.logo {
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    font-size: 400%;
+}
+
+.logo a {
+    font-family: Atma;
+    text-decoration: none;
+    color: black;
+}
+
+.logo a:hover {
+    text-shadow: -2px 0 yellow, 0 2px yellow, 2px 0 yellow, 0 -2px yellow;
+}
+
+.meny {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    background-color: lightgray;
+    opacity: 0.8;
+    border: 1px solid #000;
+    text-align: center;
+    display: inline-block;
+}
+
+.meny li {
+    float: left;
+}
+
+.meny li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.meny li a:hover {
+    background-color: white;
+}
+
+#introduction {
+    background-color: lightgray;
+    opacity: 0.9;
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+    padding-bottom: 0;
+    padding-top: 0;
+    display: inline-block;
+}
+
+.background {
+    background-color: lightgray;
+    opacity: 0.9;
+    border: 1px solid black;
+    margin: 2%;
+    padding: 2%;
+    padding-top: 0;
+    text-align: left;
+}
+
+#meatballsPicture {
+    float: right;
+    width: 25%;
+    height: auto;    
+}
+
+#pancakesPicture {
+    float: right;
+    width: 25%;
+    height: auto;    
+}
+
+#logoutbutton {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+#logoutbutton:hover {
+    background-color: white;
+}

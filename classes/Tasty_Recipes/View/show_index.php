@@ -5,9 +5,9 @@ namespace Tasty_Recipes\View;
 use Id1354fw\View\AbstractRequestHandler;
 
 /**
- * Visar index.php för hemsidan
+ *  Visar index.php
  */
-class main_page extends AbstractRequestHandler
+class show_index extends AbstractRequestHandler
 {
     protected function doExecute()
     {

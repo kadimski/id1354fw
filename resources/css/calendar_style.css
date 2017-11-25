@@ -1,0 +1,84 @@
+ul {
+    list-style-type: none;
+}
+
+/* Month header */
+.month {
+    padding: 2%;
+    background: graytext;
+    text-align: center;
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 100%;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 1% 0;
+    background-color:#ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 1% 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: left;
+    margin-bottom: 1%;
+    font-size: 120%;
+    color:#777;
+    border: 1px solid black;
+    height: 8vw;
+}
+
+.nextMonth {
+    opacity: 0.0;
+}
+
+#calendar {
+    margin: 2%;
+}
+
+#meatballsPictureCalendar {
+    display: inline;
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+#pancakesPictureCalendar {
+    display: inline;
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+#meatballsPictureCalendar:hover, #pancakesPictureCalendar:hover {
+    opacity: 0.8;
+}

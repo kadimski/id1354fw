@@ -7,33 +7,15 @@
         <title>Tasty Recipes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="reset.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
         <link href='https://fonts.googleapis.com/css?family=Atma' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
     </head>
     <body>
-        <h1 class="logo"><a href="index.php">Tasty Recipes</a></h1>
-    
-        <nav>
-            <ul class="meny">
-                <li><a href="index.php">Hem</a></li>
-                <li><a href="Meatballs_recipe/meatballs_recipe.php">Köttbullar</a></li>
-                <li><a href="Pancakes_recipe/pancakes_recipe.php">Pannkakor</a></li>
-                <li><a href="Calendar/calendar.php">Kalender</a></li>
-                <?php
-                    if (isset($_SESSION['id'])) 
-                    {
-                        echo '<li><a href="Includes/logout.php">Logga ut '.$_SESSION['usr'].'</a></li>';
-                    } 
-                    else 
-                    {
-                        echo '<li><a href="Login/login.php">Logga in</a></li>';
-                        echo '<li><a href="Signup/signup.php">Registrera dig</a></li>';
-                    }
-                ?>
-            </ul>
-        </nav>
+        <?php
+            include_once 'resources/logo_and_meny.php';
+        ?>
         
         <div id="introduction">
             <h2>Välkommen till Tasty Recipes <?php if(isset($_SESSION['id'])) { echo $_SESSION['usr'];} ?>!</h2>
