@@ -5,12 +5,12 @@ namespace Tasty_Recipes\View;
 use Id1354fw\View\AbstractRequestHandler;
 
 /**
- * Visar pancakes.php
+ *  Visar meatballs_recipe.php
  */
-class show_pancakes extends AbstractRequestHandler
-{ 
+class show_meatballs_recipe extends AbstractRequestHandler
+{
     protected function doExecute()
     {
-        return 'pancakes_recipe';
+        return 'meatballs_recipe';
     }
 }

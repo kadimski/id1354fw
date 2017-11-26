@@ -6,8 +6,8 @@
     <nav>
         <ul class="meny">
             <li><a href="show_index">Hem</a></li>
-            <li><a href="show_meatballs">Köttbullar</a></li>
-            <li><a href="show_pancakes">Pannkakor</a></li>
+            <li><a href="show_meatballs_recipe">Köttbullar</a></li>
+            <li><a href="show_pancakes_recipe">Pannkakor</a></li>
             <li><a href="show_calendar">Kalender</a></li>
             <?php
                 if(isset($_SESSION['id']))
