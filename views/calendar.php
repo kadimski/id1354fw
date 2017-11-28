@@ -2,13 +2,8 @@
 <html>
     <head>
         <title>Tasty Recipes - Kalender</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../../resources/css/reset.css">
-        <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+        <?php include_once 'resources/includes/css.html';?>
         <link rel="stylesheet" type="text/css" href="../../resources/css/calendar_style.css">
-        <link href='https://fonts.googleapis.com/css?family=Atma' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Alef' rel='stylesheet'>
     </head>
     <body>
         <?php
