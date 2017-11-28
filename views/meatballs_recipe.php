@@ -11,7 +11,7 @@
     </head>
     <body>
         <?php
-            include_once 'resources/logo_and_meny.php';
+            include_once 'resources/includes/logo_and_meny.php';
         ?> 
         
         <div class="background">
