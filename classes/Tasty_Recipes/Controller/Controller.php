@@ -5,14 +5,13 @@ namespace Tasty_Recipes\Controller;
 use Tasty_Recipes\Model\Signup;
 use Tasty_Recipes\Model\Login;
 use Tasty_Recipes\Model\Comment;
-use Tasty_Recipes\Integration\CommentDatabaseHandler;
 
 /**
  * Controller
  */
 class Controller
 {
-    private $signup, $login, $comment;
+    private $signup, $login, $comment, $comments;
 
     public function signup($username, $password, &$status)
     {
@@ -28,8 +27,8 @@ class Controller
 
     public function getComments($recipe)
     {
-        $commentDatabaseHandler = new CommentDatabaseHandler();
-        $commentDatabaseHandler->getComments($recipe);
+        $this->comment = new Comment();
+        return $this->comment->getCommentsFor($recipe);
     }
     
     public function setComment($username, $comment, $recipe)

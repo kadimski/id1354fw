@@ -14,7 +14,9 @@ class Show_meatballs_recipe extends AbstractRequestHandler
     {
         $recipe = 'meatballs';
         $controller = $this->session->get(Constants::CONTROLLER_KEY_NAME);
-        $controller->getComments($recipe);
+        $this->addVariable('comments', $controller->getComments($recipe));
+        
+        $controller = $this->session->set(Constants::CONTROLLER_KEY_NAME, $controller);
         
         return 'meatballs_recipe';
     }

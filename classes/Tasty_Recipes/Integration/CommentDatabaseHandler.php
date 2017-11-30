@@ -23,20 +23,13 @@ class CommentDatabaseHandler
     {
         $sql_get = "SELECT * FROM comments WHERE recipe = '$recipe'";
         $result = mysqli_query($this->connection, $sql_get);
+        $comments = array();
         
-        while ($row = mysqli_fetch_assoc($result))
+        while($row = mysqli_fetch_assoc($result))
         {
-            echo '<form method="POST" action="../Includes/delete_comment.php"><p>' . $row['username'] . ': ' . $row['message'] .
-            '<input type="hidden" name="commentid" value="' . $row['commentid'] . '">'
-            . '<input type="hidden" name="recipe" value="' . $recipe . '">';
-            if (isset($_SESSION['usr']) && $row['username'] == $_SESSION['usr'])
-            {
-                echo '<input type="submit" name="delete" value="Ta bort kommentar">' . '</p></form>';
-            } 
-            else
-            {
-                echo '' . '</p></form>';
-            }
+            $comments[] = $row;
         }
+        
+        return $comments;
     }
 }

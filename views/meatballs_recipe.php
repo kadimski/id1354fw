@@ -42,6 +42,22 @@
                 use Tasty_Recipes\Util\Constants;
                 $recipe = 'meatballs';
                 
+                foreach($comments as $comment)
+                {
+                    echo '<form method="POST" action="../Includes/delete_comment.php"><p>' . $comment['username'] . ': ' . $comment['message'] .
+                    '<input type="hidden" name="commentid" value="' . $comment['commentid'] . '">'.
+                    '<input type="hidden" name="recipe" value="' . $recipe . '">';
+                    
+                    if ($this->session->get(Constants::LOGGED_IN_USER) != null && $comment['username'] == $this->session->get(Constants::LOGGED_IN_USER))
+                    {
+                        echo '<input type="submit" name="delete" value="Ta bort kommentar">' . '</p></form>';
+                    } 
+                    else
+                    {
+                        echo '' . '</p></form>';
+                    }
+                }
+                
                 if($this->session->get(Constants::LOGGED_IN_USER) != null)
                 {
                     echo '<h3>Kommentera:</h3>

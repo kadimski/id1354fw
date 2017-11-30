@@ -14,7 +14,9 @@ class Show_pancakes_recipe extends AbstractRequestHandler
     {
         $recipe = 'pancakes';
         $controller = $this->session->get(Constants::CONTROLLER_KEY_NAME);
-        $controller->getComments($recipe);
+        $this->addVariable('comments', $controller->getComments($recipe));
+        
+        $controller = $this->session->set(Constants::CONTROLLER_KEY_NAME, $controller);
         
         return 'pancakes_recipe';
     }
