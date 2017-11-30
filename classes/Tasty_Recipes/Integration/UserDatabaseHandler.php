@@ -19,85 +19,53 @@ class UserDatabaseHandler
         $this->connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     }
     
-    public function signup($signup, &$status)
-    {       
-        $username = mysqli_real_escape_string($this->connection, $signup->getUsername());
-        $password = mysqli_real_escape_string($this->connection, $signup->getPassword());
+    public function checkUsernameTaken($username)
+    {
+        $username = mysqli_real_escape_string($this->connection, $username);
         
-        // Check empty input
-        if(empty($username) || empty($password))
-        {
-            //header("Location: signup.php?signup=empty");
-            //exit();
-            $status = 'empty';
-        }
-        else
-        {
-            $sql = "SELECT * FROM users WHERE username='$username'";
-            $result = mysqli_query($this->connection, $sql);
-            $resultCheck = mysqli_num_rows($result);
-            
-            // Check valid username
-            if($resultCheck > 0)
-            {
-                //header("Location: signup.php?signup=usernametaken");
-                //exit();
-                $status = 'usernametaken';
-            }
-            else 
-            {
-                //Register user
-                $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
-                mysqli_query($this->connection, $sql);
-                $status = 'success';
-                //header("Location: ../Login/login.php?signup=success");
-                //exit();
-            }
-        }
+        $sql = "SELECT * FROM users WHERE username='$username'";
+        $result = mysqli_query($this->connection, $sql);
+        return $resultCheck = mysqli_num_rows($result);
     }
     
-    public function login($login, &$status)
+    public function registerUser($username, $password)
+    {       
+        $username = mysqli_real_escape_string($this->connection, $username);
+        $password = mysqli_real_escape_string($this->connection, $password);
+
+        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
+        mysqli_query($this->connection, $sql);
+    }
+    
+    public function checkUsername($username)
     {
-        $username = mysqli_real_escape_string($this->connection, $login->getUsername());
-        $password = mysqli_real_escape_string($this->connection, $login->getPassword());
+        $username = mysqli_real_escape_string($this->connection, $username);
         
-        // Check empty input
-        if(empty($username) || empty($password))
-        {
-            /*header("Location: login.php?login=emptyfields");
-            exit();*/
-            $status = 'empty';
-        }
-        else
-        {
-            $sql = "SELECT * FROM users WHERE username='$username'";
-            $result = mysqli_query($this->connection, $sql);
-            $resultCheck = mysqli_num_rows($result);
-            
-            // Check username
-            if($resultCheck < 1)
-            {
-                /*header("Location: login.php?login=wrongusernameorpassword");
-                exit();*/
-                $status = 'wrong';
-            }
-            else
-            {
-                if($row = mysqli_fetch_assoc($result))
-                {
-                    // Check password
-                    if(!($password == $row['password']))
-                    {
-                        $status = 'wrong';
-                    }
-                    elseif($password == $row['password'])
-                    {
-                        $_SESSION['id'] = $row['id'];
-                        $_SESSION['usr'] = $row['username'];
-                        $status = 'success';
-                    }
-                }
-            }
-        }
+        $sql = "SELECT * FROM users WHERE username='$username'";
+        $result = mysqli_query($this->connection, $sql);
+        
+        return $resultCheck = mysqli_num_rows($result);
+    }
+    
+    public function checkPassword($username, $password)
+    {
+        $sql = "SELECT * FROM users WHERE username='$username'";
+        $result = mysqli_query($this->connection, $sql);
+        $row = mysqli_fetch_assoc($result);
+        
+        return $password == $row['password'];
+    }
+
+    public function loginUser($username, $password)
+    {
+        $username = mysqli_real_escape_string($this->connection, $username);
+        $password = mysqli_real_escape_string($this->connection, $password);
+        
+        $sql = "SELECT * FROM users WHERE username='$username'";
+        $result = mysqli_query($this->connection, $sql);
+        $row = mysqli_fetch_assoc($result);
+        
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['usr'] = $row['username'];
     }
 }

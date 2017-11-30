@@ -2,26 +2,38 @@
 
 namespace Tasty_Recipes\Model;
 
+use Tasty_Recipes\Integration\UserDatabaseHandler;
+
 /**
  * Description of Login
  */
 class Login
 {
-    private $username, $password;
+    private $userDatabaseHandler;
 
-    public function __construct($username, $password)
+    public function __construct()
     {
-        $this->username = $username;
-        $this->password = $password;
+        $this->userDatabaseHandler = new UserDatabaseHandler();
     }
 
-    public function getUsername()
+    public function loginUser($username, $password, &$status)
     {
-        return $this->username;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
+        if(empty($username) || empty($password))
+        {
+            $status = 'empty';
+        }
+        elseif($this->userDatabaseHandler->checkUsername($username) < 1)
+        {
+            $status = 'wrong';
+        }
+        elseif(!($this->userDatabaseHandler->checkPassword($username, $password)))
+        {
+            $status = 'wrong';
+        }
+        else
+        {
+            $this->userDatabaseHandler->loginUser($username, $password);
+            $status = 'success';
+        }
     }
 }

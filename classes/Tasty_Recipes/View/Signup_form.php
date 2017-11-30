@@ -30,7 +30,6 @@ class Signup_form extends AbstractRequestHandler
     protected function doExecute()
     {
         $controller = $this->session->get(Constants::CONTROLLER_KEY_NAME);
-        
         $status = ' ';
         $controller->signup($this->username, $this->password, $status);
         

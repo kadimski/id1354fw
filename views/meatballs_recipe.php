@@ -48,8 +48,7 @@
                                 <input type="hidden" name="recipe" value="'.$recipe.'">
                                 <input type="submit" name="sendComment" value="Skicka kommentar">
                             </form>';   
-                }
-                
+                }   
             ?>
         </div>
     </body>

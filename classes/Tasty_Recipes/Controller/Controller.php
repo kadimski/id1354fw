@@ -22,16 +22,14 @@ class Controller
 
     public function signup($username, $password, &$status)
     {
-        $this->signup = new Signup($username, $password);
-        $userDatabaseHandler = new UserDatabaseHandler();
-        $userDatabaseHandler->signup($this->signup, $status);
+        $this->signup = new Signup();
+        $this->signup->registerUser($username, $password, $status);
     }
     
     public function login($username, $password, &$status)
     {
-        $this->login = new Login($username, $password);
-        $userDatabaseHandler = new UserDatabaseHandler();
-        $userDatabaseHandler->login($this->login, $status);
+        $this->login = new Login();
+        $this->login->loginUser($username, $password, $status);
     }
     
     /*public function logout()
