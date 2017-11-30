@@ -11,14 +11,14 @@
               
         <div class="background">
             <h1>Registrera dig:</h1>
-            <form action="signup_function.php" method="POST">
+            <form action="Signup_form" method="POST">
                 Användarnamn:<input type="text" name="username" placeholder="Användarnamn" required>
                 <?php
-                    if (isset($_GET['signup']) && $_GET['signup'] == 'empty') 
+                    if (isset($status) && $status == 'empty') 
                     {
                         echo 'Fyll i användarnamn och lösenord';
                     }
-                    elseif (isset($_GET['signup']) && $_GET['signup'] == 'usernametaken')
+                    elseif (isset($status) && $status == 'usernametaken')
                     {
                         echo 'Användarnamnet är taget';
                     }

@@ -35,20 +35,15 @@
             <h3>Kommentarer:</h3>
                 <p>Stina: Väldigt goda pannkakor!</p>
                 
-            <?php
-                $recipe = "pancakes";
-                include_once '../Includes/comment_databasehandler.php';
-                include_once '../Includes/delete_comment.php';
-                include_once '../Includes/get_comments.php';
-                
+            <?php                
                 if(isset($_SESSION['id']))
                 {
                     echo '<h3>Kommentera:</h3>
-                            <form method="POST" action="../Includes/set_comment.php">
+                            <form method="POST" action="Comment_form">
                                 <input type="hidden" name="username" value="'.$_SESSION['usr'].'">
                                 <textarea rows="4" cols="70" name="comment"></textarea><br>
                                 <input type="hidden" name="recipe" value="'.$recipe.'">
-                                <input type="submit" name="send_comment" value="Skicka kommentar">
+                                <input type="submit" name="sendComment" value="Skicka kommentar">
                             </form>';
                 }
             ?>
