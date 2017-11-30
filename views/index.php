@@ -10,13 +10,13 @@
         ?>
         
         <div id="introduction">
-            <h2>Välkommen till Tasty Recipes <?php if(isset($_SESSION['id'])) { echo $_SESSION['usr'];} ?>!</h2>
+            <h2>Välkommen till Tasty Recipes <?php use Tasty_Recipes\Util\Constants; if(($this->session->get(Constants::LOGGED_IN_USER)) != null) { echo $this->session->get(Constants::LOGGED_IN_USER);} ?>!</h2>
 
             <p>På denna sida kommer du hitta många olika smakrika recepet<br> 
             Klicka på en maträtt i menyn ovan för att besöka dess recept<br>
             Om du vill se månadens rätter kan du hitta dessa i kalendern ovan<br>
             <?php
-                if(isset($_SESSION['id']))
+                if(($this->session->get(Constants::LOGGED_IN_USER)) != null)
                 {
                     echo 'För att logga ut, klicka på knappen ovan';
                 }

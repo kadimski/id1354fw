@@ -2,6 +2,8 @@
 
 namespace Tasty_Recipes\Integration;
 
+use Tasty_Recipes\Util\Constants;
+
 /**
  * Description of databaseHandler
  */
@@ -25,7 +27,7 @@ class UserDatabaseHandler
         
         $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($this->connection, $sql);
-        return $resultCheck = mysqli_num_rows($result);
+        return $result;
     }
     
     public function registerUser($username, $password)
@@ -44,16 +46,16 @@ class UserDatabaseHandler
         $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($this->connection, $sql);
         
-        return $resultCheck = mysqli_num_rows($result);
+        return $result;
     }
     
-    public function checkPassword($username, $password)
+    public function getPassword($username)
     {
         $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($this->connection, $sql);
         $row = mysqli_fetch_assoc($result);
         
-        return $password == $row['password'];
+        return $row['password'];
     }
 
     public function loginUser($username, $password)
@@ -62,10 +64,6 @@ class UserDatabaseHandler
         $password = mysqli_real_escape_string($this->connection, $password);
         
         $sql = "SELECT * FROM users WHERE username='$username'";
-        $result = mysqli_query($this->connection, $sql);
-        $row = mysqli_fetch_assoc($result);
-        
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['usr'] = $row['username'];
+        mysqli_query($this->connection, $sql);
     }
 }

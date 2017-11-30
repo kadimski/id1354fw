@@ -16,6 +16,7 @@ class Logout extends AbstractRequestHandler
         $this->session->invalidate();
         $this->session->restart();
         $this->session->set(Constants::CONTROLLER_KEY_NAME, new Controller());
+        $this->session->set(Constants::LOGGED_IN_USER, null);
         return 'index';
     }
 }

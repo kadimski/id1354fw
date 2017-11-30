@@ -22,7 +22,7 @@ class Signup
         {
             $status = 'empty';
         }
-        elseif ($this->userDatabaseHandler->checkUsernameTaken($username) > 0)
+        elseif (mysqli_num_rows($this->userDatabaseHandler->checkUsernameTaken($username)) > 0)
         {
             $status = 'usernametaken';
         }

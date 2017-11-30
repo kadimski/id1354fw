@@ -36,6 +36,7 @@ class Login_form extends AbstractRequestHandler
         if($status == 'success')
         {
             $this->session->set(Constants::CONTROLLER_KEY_NAME, $controller);
+            $this->session->set(Constants::LOGGED_IN_USER, $this->username);
             return 'index';
         }
         elseif($status == 'empty' || $status == 'wrong')

@@ -49,7 +49,7 @@ A url ending with a file extension, e.g. '.php' or '.html', is not passed to the
 
 3.3 Http Parameters
 -------------------
-The http request handling class (extending \Id1354fw\View\DefaultRequestHandler) must have a set method for each http post and get parameter. If the parameter is called 'someParam', the set method must be 'public function setSomeParam($parameterValue)'. This function will be called with the value of the http parameter before the doExecute method is called. An internal server error (http status code 500) is generated if there is not a setter
+The http request handling class (extending \Id1354fw\View\AbstractRequestHandler) must have a set method for each http post and get parameter. If the parameter is called 'someParam', the set method must be 'public function setSomeParam($parameterValue)'. This function will be called with the value of the http parameter before the doExecute method is called. An internal server error (http status code 500) is generated if there is not a setter
 for each http parameter.
 
 3.4 Views

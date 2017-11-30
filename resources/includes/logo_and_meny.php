@@ -1,6 +1,4 @@
-<?php
-    //session_start();
-?>
+
     <h1 class="logo"><a href="Show_index">Tasty Recipes</a></h1>
 
     <nav>
@@ -10,9 +8,11 @@
             <li><a href="Show_pancakes_recipe">Pannkakor</a></li>
             <li><a href="Show_calendar">Kalender</a></li>
             <?php
-                if(isset($_SESSION['id']))
+                use Tasty_Recipes\Util\Constants;
+                
+                if($this->session->get(Constants::LOGGED_IN_USER) != null)
                 {
-                    echo '<li><a href="Logout">Logga ut '.$_SESSION['usr'].'</a></li>';
+                    echo '<li><a href="Logout">Logga ut '.$this->session->get(Constants::LOGGED_IN_USER).'</a></li>';
                 }
                 else
                 {

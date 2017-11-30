@@ -35,12 +35,15 @@
             <h3>Kommentarer:</h3>
                 <p>Stina: Väldigt goda pannkakor!</p>
                 
-            <?php                
-                if(isset($_SESSION['id']))
+            <?php
+                use Tasty_Recipes\Util\Constants;
+                $recipe = 'pancakes';
+                
+                if($this->session->get(Constants::LOGGED_IN_USER) != null)
                 {
                     echo '<h3>Kommentera:</h3>
                             <form method="POST" action="Comment_form">
-                                <input type="hidden" name="username" value="'.$_SESSION['usr'].'">
+                                <input type="hidden" name="username" value="'.$this->session->get(Constants::LOGGED_IN_USER).'">
                                 <textarea rows="4" cols="70" name="comment"></textarea><br>
                                 <input type="hidden" name="recipe" value="'.$recipe.'">
                                 <input type="submit" name="sendComment" value="Skicka kommentar">

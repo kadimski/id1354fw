@@ -22,11 +22,11 @@ class Login
         {
             $status = 'empty';
         }
-        elseif($this->userDatabaseHandler->checkUsername($username) < 1)
+        elseif(mysqli_num_rows($this->userDatabaseHandler->checkUsername($username)) < 1)
         {
             $status = 'wrong';
         }
-        elseif(!($this->userDatabaseHandler->checkPassword($username, $password)))
+        elseif(!($this->userDatabaseHandler->getPassword($username) == $password))
         {
             $status = 'wrong';
         }
