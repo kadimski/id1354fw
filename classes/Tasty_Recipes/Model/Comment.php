@@ -9,7 +9,7 @@ use Tasty_Recipes\Integration\CommentDatabaseHandler;
  */
 class Comment
 {
-    private $commentDatabaseHandler, $comments, $username, $comment, $recipe;
+    private $commentDatabaseHandler, $comments, $userComment, $userCommentToDelete;
     
     public function __construct()
     {
@@ -21,19 +21,21 @@ class Comment
         $this->comments = $this->commentDatabaseHandler->getComments($recipe);
         return $this->comments;
     }
-
-    public function getUsername()
+    
+    public function setComment($userComment)
     {
-        return $this->username;
+        $this->userComment = $userComment;
+        $this->commentDatabaseHandler->setComment($this->userComment);
     }
     
-    public function getComment()
+    public function deleteComment($userCommentToDelete)
     {
-        return $this->comment;
-    }
-    
-    public function getRecipe()
-    {
-        return $this->recipe;
+        $this->userCommentToDelete = $userCommentToDelete;
+        $commentauthor = $this->commentDatabaseHandler->getCommentAuthor($this->userCommentToDelete->getCommentid());
+        
+        if($commentauthor == $this->userCommentToDelete->getUsername())
+        {
+            $this->commentDatabaseHandler->deleteComment($this->userCommentToDelete);
+        }
     }
 }

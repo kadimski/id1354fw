@@ -6,28 +6,28 @@ use Id1354fw\View\AbstractRequestHandler;
 use Tasty_Recipes\Util\Constants;
 
 /**
- * Description of Comment_form
+ * Description of Delete_comment
  */
-class Comment_form extends AbstractRequestHandler
+class Delete_comment extends AbstractRequestHandler
 {
-    private $username, $comment, $recipe;
-    
+    private $username, $commentid, $recipe;
+
     public function setUsername($username)
     {
         $this->username = $username;
     }
-    
-    public function setComment($comment)
+
+    public function setCommentid($commentid)
     {
-        $this->comment = $comment;
+        $this->commentid = $commentid;
     }
-    
+
     public function setRecipe($recipe)
     {
         $this->recipe = $recipe;
     }
-    
-    public function setSendComment($sendComment)
+
+    public function setDelete($delete)
     {
         
     }
@@ -35,15 +35,15 @@ class Comment_form extends AbstractRequestHandler
     protected function doExecute()
     {
         $controller = $this->session->get(Constants::CONTROLLER_KEY_NAME);
-        $controller->setComment($this->username , $this->comment, $this->recipe);
-            
-        if($this->recipe == 'meatballs')
+        $controller->deleteComment($this->username, $this->commentid, $this->recipe);
+        
+        if ($this->recipe == 'meatballs')
         {
             $this->session->set(Constants::CONTROLLER_KEY_NAME, $controller);
             $this->addVariable('comments', $controller->getComments($this->recipe));
             return 'meatballs_recipe';
-        }
-        elseif($this->recipe == 'pancakes')
+        } 
+        elseif ($this->recipe == 'pancakes')
         {
             $this->session->set(Constants::CONTROLLER_KEY_NAME, $controller);
             $this->addVariable('comments', $controller->getComments($this->recipe));

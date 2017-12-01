@@ -32,4 +32,31 @@ class CommentDatabaseHandler
         
         return $comments;
     }
+    
+    public function setComment($userComment)
+    {
+        $username = $userComment->getUsername();
+        $comment = $userComment->getComment();
+        $recipe = $userComment->getRecipe();
+
+        $sql_instruction = "INSERT INTO comments (username, message, recipe) VALUES('$username', '$comment', '$recipe')";
+        mysqli_query($this->connection, $sql_instruction);
+    }
+    
+    public function getCommentAuthor($commentid)
+    {
+        $sql = "SELECT username FROM comments WHERE commentid = '$commentid'";
+        $result = mysqli_query($this->connection, $sql);
+        $row = mysqli_fetch_assoc($result);
+        
+        return $row['username'];
+    }
+    
+    public function deleteComment($userCommentToDelete)
+    {
+        $cid = $userCommentToDelete->getCommentid();
+
+        $sql = "DELETE FROM comments WHERE commentid = '$cid'";
+        mysqli_query($this->connection, $sql);
+    }
 }

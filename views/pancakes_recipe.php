@@ -41,7 +41,8 @@
                 
                 foreach($comments as $comment)
                 {
-                    echo '<form method="POST" action="../Includes/delete_comment.php"><p>' . $comment['username'] . ': ' . $comment['message'] .
+                    echo '<form method="POST" action="Delete_comment"><p>' . $comment['username'] . ': ' . $comment['message'] .
+                    '<input type = "hidden" name = "username" value = "' . $this->session->get(Constants::LOGGED_IN_USER) . '" >' .
                     '<input type="hidden" name="commentid" value="' . $comment['commentid'] . '">'.
                     '<input type="hidden" name="recipe" value="' . $recipe . '">';
                     
