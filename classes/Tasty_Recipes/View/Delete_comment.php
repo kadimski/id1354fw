@@ -14,17 +14,17 @@ class Delete_comment extends AbstractRequestHandler
 
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->username = htmlentities($username, ENT_QUOTES);
     }
 
     public function setCommentid($commentid)
     {
-        $this->commentid = $commentid;
+        $this->commentid = htmlentities($commentid, ENT_QUOTES);
     }
 
     public function setRecipe($recipe)
     {
-        $this->recipe = $recipe;
+        $this->recipe = htmlentities($recipe, ENT_QUOTES);
     }
 
     public function setDelete($delete)

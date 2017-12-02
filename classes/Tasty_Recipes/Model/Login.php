@@ -26,7 +26,7 @@ class Login
         {
             $status = 'wrong';
         }
-        elseif(!($this->userDatabaseHandler->getPassword($username) == $password))
+        elseif(!(password_verify ($password, $this->userDatabaseHandler->getPassword($username))))
         {
             $status = 'wrong';
         }

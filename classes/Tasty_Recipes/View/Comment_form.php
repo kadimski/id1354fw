@@ -14,17 +14,17 @@ class Comment_form extends AbstractRequestHandler
     
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->username = htmlentities($username, ENT_QUOTES);
     }
     
     public function setComment($comment)
     {
-        $this->comment = $comment;
+        $this->comment = htmlentities($comment, ENT_QUOTES);
     }
     
     public function setRecipe($recipe)
     {
-        $this->recipe = $recipe;
+        $this->recipe = htmlentities($recipe, ENT_QUOTES);
     }
     
     public function setSendComment($sendComment)

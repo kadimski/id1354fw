@@ -10,16 +10,16 @@ use Tasty_Recipes\Util\Constants;
  */
 class Signup_form extends AbstractRequestHandler
 {
-    private $username, $password;
+    private $username, $password, $status;
             
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->username = htmlentities($username, ENT_QUOTES);
     }
     
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = htmlentities($password, ENT_QUOTES);
     }
     
     public function setRegister($register)
@@ -30,7 +30,7 @@ class Signup_form extends AbstractRequestHandler
     protected function doExecute()
     {
         $controller = $this->session->get(Constants::CONTROLLER_KEY_NAME);
-        $status = ' ';
+        $this->status = ' ';
         $controller->signup($this->username, $this->password, $status);
         
         if($status == 'success')

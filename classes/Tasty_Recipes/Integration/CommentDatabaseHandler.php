@@ -12,8 +12,7 @@ class CommentDatabaseHandler
     public function __construct()
     {
         $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
+        include_once 'resources/includes/database.php';
         $dbName = "comments";
 
         $this->connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);

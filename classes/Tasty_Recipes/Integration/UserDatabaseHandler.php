@@ -14,8 +14,7 @@ class UserDatabaseHandler
     public function __construct()
     {
         $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
+        include_once 'resources/includes/database.php';
         $dbName = "login";
 
         $this->connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -34,8 +33,9 @@ class UserDatabaseHandler
     {       
         $username = mysqli_real_escape_string($this->connection, $username);
         $password = mysqli_real_escape_string($this->connection, $password);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
+        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword');";
         mysqli_query($this->connection, $sql);
     }
     
