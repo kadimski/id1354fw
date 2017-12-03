@@ -14,7 +14,7 @@ class UserDatabaseHandler
     public function __construct()
     {
         $dbServerName = "localhost";
-        include_once 'resources/includes/database.php';
+        require 'resources/includes/database.php';
         $dbName = "login";
 
         $this->connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
