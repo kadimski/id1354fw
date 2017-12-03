@@ -16,23 +16,23 @@ class Login
         $this->userDatabaseHandler = new UserDatabaseHandler();
     }
 
-    public function loginUser($username, $password, &$status)
+    public function loginUser($userToLogin, &$status)
     {
-        if(empty($username) || empty($password))
+        if(empty($userToLogin->getUsername()) || empty($userToLogin->getPassword()))
         {
             $status = 'empty';
         }
-        elseif(mysqli_num_rows($this->userDatabaseHandler->checkUsername($username)) < 1)
+        elseif(mysqli_num_rows($this->userDatabaseHandler->checkUsername($userToLogin->getUsername())) < 1)
         {
             $status = 'wrong';
         }
-        elseif(!(password_verify ($password, $this->userDatabaseHandler->getPassword($username))))
+        elseif(!(password_verify ($userToLogin->getPassword(), $this->userDatabaseHandler->getPassword($userToLogin->getUsername()))))
         {
             $status = 'wrong';
         }
         else
         {
-            $this->userDatabaseHandler->loginUser($username, $password);
+            $this->userDatabaseHandler->loginUser($userToLogin);
             $status = 'success';
         }
     }

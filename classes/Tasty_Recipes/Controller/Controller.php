@@ -5,6 +5,7 @@ namespace Tasty_Recipes\Controller;
 use Tasty_Recipes\Model\Signup;
 use Tasty_Recipes\Model\Login;
 use Tasty_Recipes\Model\Comment;
+use Tasty_Recipes\Model\User;
 use Tasty_Recipes\Model\UserComment;
 use Tasty_Recipes\Model\UserCommentToDelete;
 
@@ -13,18 +14,20 @@ use Tasty_Recipes\Model\UserCommentToDelete;
  */
 class Controller
 {
-    private $signup, $login, $userComment, $comment, $comments, $userCommentToDelete;
+    private $signup, $login, $userToSignup, $userToLogin, $userComment, $comment, $comments, $userCommentToDelete;
 
     public function signup($username, $password, &$status)
     {
         $this->signup = new Signup();
-        $this->signup->registerUser($username, $password, $status);
+        $this->userToSignup = new User($username, $password);
+        $this->signup->registerUser($this->userToSignup, $status);
     }
     
     public function login($username, $password, &$status)
     {
         $this->login = new Login();
-        $this->login->loginUser($username, $password, $status);
+        $this->userToLogin = new User($username, $password);
+        $this->login->loginUser($this->userToLogin, $status);
     }
 
     public function getComments($recipe)

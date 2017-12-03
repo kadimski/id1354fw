@@ -16,19 +16,19 @@ class Signup
         $this->userDatabaseHandler = new UserDatabaseHandler();
     }
     
-    public function registerUser($username, $password, &$status)
+    public function registerUser($userToSignup, &$status)
     {
-        if(empty($username) || empty($password))
+        if(empty($userToSignup->getUsername()) || empty($userToSignup->getPassword()))
         {
             $status = 'empty';
         }
-        elseif (mysqli_num_rows($this->userDatabaseHandler->checkUsernameTaken($username)) > 0)
+        elseif (mysqli_num_rows($this->userDatabaseHandler->checkUsernameTaken($userToSignup->getUsername())) > 0)
         {
             $status = 'usernametaken';
         }
         else
         {
-            $this->userDatabaseHandler->registerUser($username, $password);
+            $this->userDatabaseHandler->registerUser($userToSignup);
             $status = 'success';
         }    
     }

@@ -29,10 +29,10 @@ class UserDatabaseHandler
         return $result;
     }
     
-    public function registerUser($username, $password)
+    public function registerUser($userToSignup)
     {       
-        $username = mysqli_real_escape_string($this->connection, $username);
-        $password = mysqli_real_escape_string($this->connection, $password);
+        $username = mysqli_real_escape_string($this->connection, $userToSignup->getUsername());
+        $password = mysqli_real_escape_string($this->connection, $userToSignup->getPassword());
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashedPassword');";
@@ -58,10 +58,10 @@ class UserDatabaseHandler
         return $row['password'];
     }
 
-    public function loginUser($username, $password)
+    public function loginUser($userToLogn)
     {
-        $username = mysqli_real_escape_string($this->connection, $username);
-        $password = mysqli_real_escape_string($this->connection, $password);
+        $username = mysqli_real_escape_string($this->connection, $userToLogn->getUsername());
+        $password = mysqli_real_escape_string($this->connection, $userToLogn->getPassword());
         
         $sql = "SELECT * FROM users WHERE username='$username'";
         mysqli_query($this->connection, $sql);
