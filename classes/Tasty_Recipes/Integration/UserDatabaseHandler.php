@@ -2,8 +2,6 @@
 
 namespace Tasty_Recipes\Integration;
 
-use Tasty_Recipes\Util\Constants;
-
 /**
  * Description of databaseHandler
  */
